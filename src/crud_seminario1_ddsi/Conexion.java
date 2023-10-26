@@ -16,8 +16,8 @@ public class Conexion {
     
     //Variables para conectarnos a la BD
     private static final String URL="jdbc:oracle:thin:@//oracle0.ugr.es:1521/practbd.oracle0.ugr.es"; 
-    private static final String USERNAME="x1"; //x y los siguientes dígitos de tu DNI, la password igual
-    private static final String PASSWORD="x"; 
+    private static final String USERNAME=""; //x y los siguientes dígitos de tu DNI, la password igual
+    private static final String PASSWORD=""; 
     
     public Connection conectar(){ // Método de conexión a la BD
         try{
