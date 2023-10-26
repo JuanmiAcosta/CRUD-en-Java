@@ -11,6 +11,7 @@ public class CRUD extends javax.swing.JFrame {
     Conexion con = Conexion.getInstance(); 
     Connection conexion;
     
+    
     public CRUD() {
         initComponents();
         this.setResizable(false);
