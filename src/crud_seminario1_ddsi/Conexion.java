@@ -28,6 +28,7 @@ public class Conexion {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             JOptionPane.showMessageDialog(null, "Establecida conexión con BD. Nº de conexión: " + id);
             conexion = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            conexion.setAutoCommit(false);
             id++;
 
         } catch (Exception e) {
@@ -39,8 +40,8 @@ public class Conexion {
     public void cierreConexion() { // Método para cerrar la conexión      
         try {
             int id_a_cerrar = id - 1;
-            if (id <= 0) {
-                id = 0;
+            if (id_a_cerrar <= 0) {
+                id_a_cerrar = 0;
             }
             JOptionPane.showMessageDialog(null, "Cerrada conexión con BD. Nº de conexión: " + (id_a_cerrar));
             conexion.close();

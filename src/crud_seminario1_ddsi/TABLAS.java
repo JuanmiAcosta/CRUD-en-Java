@@ -1,7 +1,6 @@
 package crud_seminario1_ddsi;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,6 +8,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class TABLAS extends javax.swing.JFrame {
+    
+    Conexion con = Conexion.getInstance();
 
     public TABLAS() {
         initComponents();
@@ -106,38 +107,39 @@ public class TABLAS extends javax.swing.JFrame {
     }//GEN-LAST:event_volver_btnActionPerformed
 
     private void borrar_tablas_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrar_tablas_btnActionPerformed
-        Conexion con = Conexion.getInstance();
-        Connection conexion = con.conectar();
-
+        
         try {
-
-            Statement borracion = conexion.createStatement();
             
+            Connection conexion = con.conectar();
+            Statement borracion = conexion.createStatement();   
             borracion.executeUpdate("DROP TABLE Detalle_Pedido");
             borracion.executeUpdate("DROP TABLE Stock");
             borracion.executeUpdate("DROP TABLE Pedido");
             JOptionPane.showMessageDialog(null, "Las tablas Stock, Pedido y Detalle_pedido han sido eliminadas correctamente.");
-            con.cierreConexion();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(TABLAS.class.getName()).log(Level.SEVERE, "Error al borrar las tablas", ex);
+           
+        } catch (Exception ex) {
+           JOptionPane.showMessageDialog(null, "Error al eliminar las tablas, es posible que ya estén eliminadas o no existan : " + ex);   
         }
+        
+        con.cierreConexion();
     }//GEN-LAST:event_borrar_tablas_btnActionPerformed
 
     private void crear_tablas_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crear_tablas_btnActionPerformed
-        Conexion con = Conexion.getInstance();
-        Connection conexion = con.conectar();
-        
+      
         try {
+            
+            Connection conexion = con.conectar();
             Statement statement = conexion.createStatement();
             statement.executeUpdate("CREATE TABLE Stock(Cproducto NUMBER NOT NULL PRIMARY KEY, Cantidad NUMBER NOT NULL)");
             statement.executeUpdate("CREATE TABLE Pedido(Cpedido NUMBER NOT NULL PRIMARY KEY, Ccliente NUMBER NOT NULL, Fecha_pedido DATE NOT NULL)");
             statement.executeUpdate("CREATE TABLE Detalle_pedido(Cpedido NUMBER NOT NULL, Cproducto NUMBER NOT NULL, Cantidad NUMBER NOT NULL, PRIMARY KEY(Cpedido, Cproducto), FOREIGN KEY(Cpedido) REFERENCES Pedido(Cpedido), FOREIGN KEY(Cproducto) REFERENCES Stock(Cproducto))");
             JOptionPane.showMessageDialog(null, "Las tablas Stock, Pedido y Detalle_pedido han sido creadas correctamente.");
-            con.cierreConexion();
-        } catch (SQLException ex) {
-            Logger.getLogger(TABLAS.class.getName()).log(Level.SEVERE, "Error al crear las tablas", ex);
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error al crear las tablas, es posible que ya existan : " + ex);       
         }
+        
+        con.cierreConexion();
 
     }//GEN-LAST:event_crear_tablas_btnActionPerformed
 

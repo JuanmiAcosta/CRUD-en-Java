@@ -118,20 +118,10 @@ public class CRUD extends javax.swing.JFrame {
 
     private void conexion_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conexion_btnActionPerformed
         conexion = con.conectar();
-        try {
-            // Deshabilite autocommit
-            conexion.setAutoCommit(false);
-        } catch (SQLException ex) {
-            Logger.getLogger(CRUD.class.getName()).log(Level.SEVERE, "Fallo al desactivar autocommit", ex);
-        }
     }//GEN-LAST:event_conexion_btnActionPerformed
 
     private void cierre_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cierre_btnActionPerformed
-        try {
-            con.cierreConexion();
-        } catch (SQLException ex) {
-            Logger.getLogger(CRUD.class.getName()).log(Level.SEVERE, "Fallo al cierre de conexión", ex);
-        }
+        con.cierreConexion();
     }//GEN-LAST:event_cierre_btnActionPerformed
 
     private void tablas_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tablas_btnActionPerformed
