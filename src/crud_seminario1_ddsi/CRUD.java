@@ -117,11 +117,11 @@ public class CRUD extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void conexion_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conexion_btnActionPerformed
-        conexion = con.conectar();
+        conexion = con.pruebaConectar();
     }//GEN-LAST:event_conexion_btnActionPerformed
 
     private void cierre_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cierre_btnActionPerformed
-        con.cierreConexion();
+        con.pruebaCierreConexion();
     }//GEN-LAST:event_cierre_btnActionPerformed
 
     private void tablas_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tablas_btnActionPerformed

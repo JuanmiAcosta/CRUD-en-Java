@@ -26,7 +26,7 @@ public class Conexion {
     public Connection conectar() { // Método de conexión a la BD
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            JOptionPane.showMessageDialog(null, "Establecida conexión con BD. Nº de conexión: " + id);
+            //JOptionPane.showMessageDialog(null, "Establecida conexión con BD. Nº de conexión: " + id);
             conexion = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             conexion.setAutoCommit(false);
             id++;
@@ -38,6 +38,39 @@ public class Conexion {
     }
 
     public void cierreConexion() { // Método para cerrar la conexión      
+        try {
+            int id_a_cerrar = id - 1;
+            if (id_a_cerrar <= 0) {
+                id_a_cerrar = 0;
+            }
+            //JOptionPane.showMessageDialog(null, "Cerrada conexión con BD. Nº de conexión: " + (id_a_cerrar));
+            conexion.close();
+            id--;
+            if (id <= 0) {
+                id = 0;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al cerrar la conexión con la BD  : " + e);
+
+        }
+    }
+    
+   public Connection pruebaConectar() { // Método de conexión a la BD
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            JOptionPane.showMessageDialog(null, "Establecida conexión con BD. Nº de conexión: " + id);
+            conexion = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            conexion.setAutoCommit(false);
+            id++;
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al conectar con la BD  : " + e);
+        }
+        return conexion;
+    }
+
+    public void pruebaCierreConexion() { // Método para cerrar la conexión      
         try {
             int id_a_cerrar = id - 1;
             if (id_a_cerrar <= 0) {
