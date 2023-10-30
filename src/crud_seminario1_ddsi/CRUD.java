@@ -31,8 +31,9 @@ public class CRUD extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 4, true));
 
-        tablas_btn.setBackground(new java.awt.Color(102, 153, 255));
+        tablas_btn.setBackground(new java.awt.Color(0, 0, 0));
         tablas_btn.setFont(new java.awt.Font("Microsoft JhengHei Light", 1, 18)); // NOI18N
+        tablas_btn.setForeground(new java.awt.Color(255, 255, 255));
         tablas_btn.setText("TABLAS");
         tablas_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -40,8 +41,9 @@ public class CRUD extends javax.swing.JFrame {
             }
         });
 
-        pedido_btn.setBackground(new java.awt.Color(102, 153, 255));
+        pedido_btn.setBackground(new java.awt.Color(0, 0, 0));
         pedido_btn.setFont(new java.awt.Font("Microsoft JhengHei Light", 1, 18)); // NOI18N
+        pedido_btn.setForeground(new java.awt.Color(255, 255, 255));
         pedido_btn.setText("PEDIDO");
         pedido_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
