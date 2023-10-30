@@ -16,6 +16,8 @@ public class TABLAS extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setTitle("Tablas");
         refrescar_stock_table();
+        refrescar_pedido_table();
+        refrescar_detalle_pedido_table();
     }
 
     @SuppressWarnings("unchecked")
@@ -251,7 +253,7 @@ public class TABLAS extends javax.swing.JFrame {
 
         String consulta = "SELECT * FROM Stock";
         try {
-           
+
             Statement statement = conexion.createStatement();
             ResultSet rs = statement.executeQuery(consulta);
 
@@ -277,6 +279,79 @@ public class TABLAS extends javax.swing.JFrame {
 
         con.cierreConexion();
     }
+
+    private void refrescar_pedido_table() {
+
+        // Obtener la conexión a la base de datos
+        Connection conexion = con.conectar();
+
+        pedido_table.removeAll();
+
+        String consulta = "SELECT * FROM Pedido";
+        try {
+            Statement statement = conexion.createStatement();
+            ResultSet rs = statement.executeQuery(consulta);
+
+            // Crear un modelo de datos
+            DefaultTableModel modelo = new DefaultTableModel(
+                    null,
+                    new String[]{"Cpedido", "Ccliente", "Fecha_pedido"}
+            );
+
+            while (rs.next()) {
+                Object[] fila = new Object[]{
+                    rs.getInt("Cpedido"),
+                    rs.getInt("Ccliente"),
+                    rs.getDate("Fecha_pedido")
+                };
+                modelo.addRow(fila);
+            }
+
+            pedido_table.setModel(modelo);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error al consultar tabla pedido : " + ex);
+
+        }
+
+        con.cierreConexion();
+    }
+
+    private void refrescar_detalle_pedido_table() {
+
+        // Obtener la conexión a la base de datos
+        Connection conexion = con.conectar();
+
+        detalle_pedido_table.removeAll();
+
+        String consulta = "SELECT * FROM detalle_pedido";
+        try {
+            Statement statement = conexion.createStatement();
+            ResultSet rs = statement.executeQuery(consulta);
+
+            // Crear un modelo de datos
+            DefaultTableModel modelo = new DefaultTableModel(
+                    null,
+                    new String[]{"Cpedido", "Cproducto", "Cantidad"}
+            );
+
+            while (rs.next()) {
+                Object[] fila = new Object[]{
+                    rs.getInt("Cpedido"),
+                    rs.getInt("Cproducto"),
+                    rs.getInt("Cantidad")
+                };
+                modelo.addRow(fila);
+            }
+
+            detalle_pedido_table.setModel(modelo);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error al consultar tabla detalle_pedido : " + ex);
+
+        }
+
+        con.cierreConexion();
+    }
+
 
     private void volver_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volver_btnActionPerformed
         CRUD crud = new CRUD();

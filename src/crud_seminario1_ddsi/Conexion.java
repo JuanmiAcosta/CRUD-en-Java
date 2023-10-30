@@ -12,7 +12,7 @@ public class Conexion {
     //Creamos variable para guardar el estado de la conexion con BD
     private static Connection conexion;
 
-    //Una variable para crear una sola instancia (Singleotn)
+    //Una variable para crear una sola instancia (Singleton)
     private static Conexion instancia;
 
     //Identificador de conexión

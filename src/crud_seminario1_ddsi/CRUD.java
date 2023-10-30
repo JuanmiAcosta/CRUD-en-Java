@@ -2,9 +2,6 @@
 package crud_seminario1_ddsi;
 
 import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class CRUD extends javax.swing.JFrame {
     
