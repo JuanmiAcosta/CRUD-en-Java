@@ -1,2 +1,2 @@
-# CRUD-Sencillo-en-Java
-Se trata de una práctica de la asignatura DDSI en la que se ha de investigar diferentes drivers y SGBD para hacer un CRUD con tres tablas Stock, Pedidos, Detalle-Pedidos. Para esta se decide usar Java con JDBC 11.
+# CRUD-en-Java
+Práctica para la asignatura de Desarrollo y Diseño de Sistemas de Información. En esta se implementa un CRUD con 3 tablas (Stock, Pedido y Detalle_Pedido) y se ha de realizar una transacción en la que se haga uso de commits , rollbacks y savepoints.
