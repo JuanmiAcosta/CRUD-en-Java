@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Savepoint;
-import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class OPCIONES extends javax.swing.JFrame {
@@ -331,7 +330,6 @@ public class OPCIONES extends javax.swing.JFrame {
             int cantidad_bd = rs.getInt("Cantidad");
 
             if (cantidad_bd < cantidad) {
-                conexion.rollback();
                 JOptionPane.showMessageDialog(null, "No queda tanta cantidad de ese producto específico ; Cproducto " + cproducto + ", Cantidad : " + cantidad_bd);
             } else {
 
@@ -404,10 +402,14 @@ public class OPCIONES extends javax.swing.JFrame {
             System.out.println("CANCELACIÓN DEL PEDIDO. Eliminados detalles del pedido y actualizaciones de stock no deseadas");
             
             //Hacemos rollback a antes de insertar datos del pedido en su tabla
+            
+            this.setVisible(false);
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error al resetar las actualizaciones de stock y detalles del pedido : " + ex);
         }
+        
+        
 
     }//GEN-LAST:event_eliminar_pedido_btnActionPerformed
 
@@ -420,6 +422,8 @@ public class OPCIONES extends javax.swing.JFrame {
             System.out.println("COMMIT Y CIERRE DE CONEXIÓN");
             
             //Hacemos los cambios permanentes
+            
+            this.setVisible(false);
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error al resetar las actualizaciones de stock y detalles del pedido : " + ex);
