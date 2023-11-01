@@ -322,6 +322,18 @@ public class OPCIONES extends javax.swing.JFrame {
         System.out.println("Cproducto : " + cproducto + " Cpedido: " + cpedido + " Cantidad: " + cantidad);
 
         try {
+           //PUEDE SER QUE HAYA QUE HACER ESTO
+            /*
+            PreparedStatement comprobacion_detalle_pedido = conexion.prepareStatement("SELECT COUNT(*) FROM Detalle_Pedido WHERE Cproducto=? AND Cpedido = ?");
+            comprobacion_detalle_pedido.setInt(1, cproducto);
+            comprobacion_detalle_pedido.setInt(2,cpedido);
+            ResultSet rs0 = comprobacion_detalle_pedido.executeQuery();
+            rs0.next();
+            Boolean hay_ya_un_producto = (rs0.getInt(1) > 0);
+            
+            if (hay_ya_un_producto){
+                conexion.rollback(savepoint2);
+            }  */  
 
             PreparedStatement preparedStatement = conexion.prepareStatement("SELECT * FROM Stock WHERE Cproducto=?");
             preparedStatement.setInt(1, cproducto);
