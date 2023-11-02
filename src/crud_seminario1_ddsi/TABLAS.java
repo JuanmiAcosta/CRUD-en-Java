@@ -160,7 +160,7 @@ public class TABLAS extends javax.swing.JFrame {
         actualizar_btn.setBackground(new java.awt.Color(0, 0, 0));
         actualizar_btn.setFont(new java.awt.Font("Microsoft JhengHei Light", 1, 18)); // NOI18N
         actualizar_btn.setForeground(new java.awt.Color(255, 255, 255));
-        actualizar_btn.setText("Actualizar tablas");
+        actualizar_btn.setText("Refrescar");
         actualizar_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actualizar_btnActionPerformed(evt);
@@ -185,7 +185,6 @@ public class TABLAS extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(90, 90, 90)
                         .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(92, 92, 92)
