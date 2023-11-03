@@ -11,18 +11,17 @@ public class OPCIONES extends javax.swing.JFrame {
     static private int cpedido;
     static private int ccliente;
     static private Connection conexion;
-    static private Savepoint savepoint1;
-    static private Savepoint savepoint2;
+    static private Savepoint savepoint;
 
     Conexion con = Conexion.getInstance();
 
-    public OPCIONES(int cpedido, int ccliente, Connection conexion, Savepoint savepoint1, Savepoint savepoint2) {
+    public OPCIONES(int cpedido, int ccliente, Connection conexion, Savepoint savepoint) {
 
         this.conexion = conexion;
         this.cpedido = cpedido;
         this.ccliente = ccliente;
-        this.savepoint1 = savepoint1; //antes de crear el pedido actual
-        this.savepoint2 = savepoint2; //despues de crear el pedido actual
+
+        this.savepoint = savepoint; //despues de crear el pedido actual
 
         initComponents();
 
@@ -379,7 +378,7 @@ public class OPCIONES extends javax.swing.JFrame {
      
         try {
 
-            conexion.rollback(savepoint2);
+            conexion.rollback(savepoint);
             
             System.out.println("Eliminados detalles del pedido y actualizaciones de stock no deseadas");
             
@@ -397,7 +396,7 @@ public class OPCIONES extends javax.swing.JFrame {
        
         try {
 
-            conexion.rollback(savepoint1);
+            conexion.rollback();
             
             System.out.println("CANCELACIÓN DEL PEDIDO. Eliminados detalles del pedido y actualizaciones de stock no deseadas");
             
@@ -475,7 +474,7 @@ public static void main(String args[]) {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new OPCIONES(cpedido, ccliente, conexion, savepoint1, savepoint2).setVisible(true);
+                new OPCIONES(cpedido, ccliente, conexion, savepoint).setVisible(true);
             }
         });
     }

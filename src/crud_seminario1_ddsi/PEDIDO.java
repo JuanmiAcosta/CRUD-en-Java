@@ -130,11 +130,9 @@ public class PEDIDO extends javax.swing.JFrame {
         int ccliente = Integer.parseInt(ccliente_field.getText());
 
         Connection conexion = con.conectar();
-        Savepoint savepoint1 = null;
-        Savepoint savepoint2 = null;
+        Savepoint savepoint = null;
+
         try {
-           
-            savepoint1 = conexion.setSavepoint("antes_de_pedido");
             
             PreparedStatement statement = conexion.prepareStatement("INSERT INTO Pedido (Cpedido, Ccliente, Fecha_Pedido) VALUES (?,?,SYSDATE)");
 
@@ -145,13 +143,13 @@ public class PEDIDO extends javax.swing.JFrame {
 
             statement.close();
             
-            savepoint2 = conexion.setSavepoint("despues_de_pedido");
+            savepoint = conexion.setSavepoint("despues_de_pedido");
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Fallo al comenzar un pedido : " + ex);
         }
 
-        OPCIONES opciones = new OPCIONES(cpedido, ccliente, conexion, savepoint1, savepoint2);
+        OPCIONES opciones = new OPCIONES(cpedido, ccliente, conexion, savepoint);
         opciones.setVisible(true);
     }//GEN-LAST:event_realizar_pedido_btnActionPerformed
 
